@@ -1,0 +1,110 @@
+{
+  "accounts": [
+    {
+      "code": 1001,
+      "name": "Revenue"
+    },
+    {
+      "code": 1002,
+      "name": "Sales costs"
+    },
+    {
+      "code": 2001,
+      "name": "Salaries"
+    },
+    {
+      "code": 2002,
+      "name": "Other costs"
+    }
+  ],
+  "balances": [
+    {
+      "accountCode": 1001,
+      "companyCode": "FR01",
+      "amount": 45
+    },
+    {
+      "accountCode": 1002,
+      "companyCode": "FR01",
+      "amount": -625
+    },
+    {
+      "accountCode": 2001,
+      "companyCode": "FR01",
+      "amount": -2333
+    },
+    {
+      "accountCode": 2002,
+      "companyCode": "FR01",
+      "amount": -455
+    },
+    {
+      "accountCode": 1001,
+      "companyCode": "US01",
+      "amount": 8435
+    },
+    {
+      "accountCode": 1002,
+      "companyCode": "US01",
+      "amount": -345
+    },
+    {
+      "accountCode": 2001,
+      "companyCode": "US01",
+      "amount": -1345
+    },
+    {
+      "accountCode": 2002,
+      "companyCode": "US01",
+      "amount": -64
+    }
+  ],
+  "companies": [
+    {
+      "code": "FR01",
+      "name": "Mont Blanc",
+      "currency": "EUR",
+      "parent": "DK01",
+      "type": "Company"
+    },
+    {
+      "code": "US01",
+      "name": "Denali",
+      "currency": "USD",
+      "parent": "DK01",
+      "type": "Company"
+    },
+    {
+      "code": "DK01",
+      "name": "Mountain",
+      "currency": "DKK",
+      "parent": "",
+      "type": "Group"
+    }
+  ],
+  "currencies": [
+    {
+      "name": "DKK"
+    },
+    {
+      "name": "EUR"
+    },
+    {
+      "name": "USD"
+    }
+  ],
+  "exchangeRates": [
+    {
+      "currency": "DKK",
+      "rate": 100
+    },
+    {
+      "currency": "EUR",
+      "rate": 742
+    },
+    {
+      "currency": "USD",
+      "rate": 654
+    }
+  ]
+}

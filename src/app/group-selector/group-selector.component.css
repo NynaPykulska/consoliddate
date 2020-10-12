@@ -1,0 +1,57 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.groups-list {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding: 20px;
+  border-radius: 5px;
+  background: #BFCFEE;
+}
+
+.group-container-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.group-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #304C89;
+  border-radius: 5px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.group-container:hover {
+  background: #DFE7F6;
+  cursor: pointer;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #304C89;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.form-name {
+  font-size: 16px;
+}
+
+.group-name {
+  font-size: 16px;
+  padding-left: 10px;
+}

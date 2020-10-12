@@ -1,0 +1,99 @@
+<div class="group-consolidated-container" *ngIf="activeGroup && exchangeRates">
+  <div class="group-overview">
+    <h4 class="title">Group Overview</h4>
+    <div class="horizontal-details group-details">
+      <p>Name: <b>{{activeGroup.name}}</b></p>
+      <p>Code: <b>{{activeGroup.code}}</b></p>
+      <p>Currency: <b>{{activeGroup.currency}}</b></p>
+      <p>Total value: <b>{{calculateOverviewValue() | currency:activeGroup.currency:'symbol':'1.0-2'}}</b></p>
+    </div>
+  </div>
+
+  <div class="companies-container">
+    <h4 class="title">Companies in the group:</h4>
+    <div class="company-list-item" *ngFor="let company of activeGroup.companies">
+      <div class="horizontal-details company-details">
+        <p>Name: <b>{{company.name}}</b></p>
+        <p>Code: <b>{{company.code}}</b></p>
+        <p>Currency: <b>{{company.currency}}</b></p>
+        <p>Total value: <b>{{calculateCompanyValue(company) | currency:activeGroup.currency:'symbol':'1.0-2'}}</b></p>
+      </div>
+      <div class="accounts-list">
+        <h5 class="title">Company accounts:</h5>
+        <div class="horizontal-details" *ngFor="let account of company.accounts">
+          <p>Name: <b>{{account.name}}</b></p>
+          <p>Code: <b>{{account.code}}</b></p>
+          <p *ngIf="activeAccountEdit !== account.code ; else editBalance">Original balance: <b>{{account.balance | currency:company.currency:'symbol':'1.0-2'}}</b></p>
+          <ng-template #editBalance>
+            <mat-form-field >
+              <mat-label>New balance</mat-label>
+              <input matInput type="number" #newBalance (keyup.enter)="updateAccountBalance(company.code, account.code, newBalance.value)" >
+            </mat-form-field>
+          </ng-template>
+          <p>Exchanged balance:
+            <b>{{calculateAccountBalance(account, company.currency)  | currency:activeGroup.currency:'symbol':'1.0-2'}}</b>
+          </p>
+          <div class="account-actions">
+            <button mat-icon-button (click)="activeAccountEdit = account.code">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="deleteAccount(company.code, account.code)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="create-new-box">
+    <h4>Create new company:</h4>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="newCompanyName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Code</mat-label>
+      <input matInput [(ngModel)]="newCompanyCode">
+    </mat-form-field>
+
+    <mat-label>Currency</mat-label>
+    <mat-select [(value)]="newCompanyCurrency">
+      <mat-option *ngFor="let rate of exchangeRates" [value]="rate.currency">
+        {{rate.currency}}
+      </mat-option>
+    </mat-select>
+
+
+    <button mat-icon-button [disabled]="!newCompanyCurrency || !newCompanyName || !newCompanyCode" (click)="createCompany()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="create-new-box">
+    <h4>Create new account:</h4>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="newAccountName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Code (number)</mat-label>
+      <input matInput type="number" [(ngModel)]="newAccountCode">
+    </mat-form-field>
+
+    <mat-label>Company</mat-label>
+    <mat-select [(value)]="newAccountCompany">
+      <mat-option *ngFor="let company of activeGroup.companies" [value]="company.code">
+        {{company.name}} ({{company.code}})
+      </mat-option>
+    </mat-select>
+
+    <button mat-icon-button [disabled]="!newAccountCompany || !newAccountCode || !newAccountName" (click)="createAccount()">
+      <mat-icon>add</mat-icon>
+    </button>
+
+  </div>
+</div>

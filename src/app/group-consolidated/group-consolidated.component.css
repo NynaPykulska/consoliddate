@@ -1,0 +1,65 @@
+.group-consolidated-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.group-overview {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #304C89;
+  border-radius: 5px;
+  background: #fff;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+.group-details {
+  padding: 5px 5px 5px 15px;
+  background: #DFE7F6
+}
+
+
+.companies-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #304C89 ;
+  border-radius: 5px;
+  background: #fff;
+  margin: 20px 0;
+}
+
+.title {
+  padding: 5px 5px 5px 15px;
+}
+
+.horizontal-details {
+  display: flex;
+  justify-content: space-between;
+  min-width: 900px;
+  padding: 5px 15px;
+}
+
+.company-list-item {
+  border-top:  2px solid #304C89;
+}
+
+.accounts-list .horizontal-details {
+  padding: 0 20px;
+}
+
+.company-details, .accounts-list .horizontal-details:nth-child(even) {
+  background: #DFE7F6
+}
+
+.create-new-box {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #304C89;
+  border-radius: 5px;
+  background: #fff;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+

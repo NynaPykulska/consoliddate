@@ -1,0 +1,36 @@
+<div class="groups-list">
+
+  <h3> Select a group to consolidate:</h3>
+  <div *ngFor="let group of groups" class="group-container-row">
+    <button mat-icon-button (click)="deleteGroup(group.code)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <div class="group-container" (click)="goToGroup(group.code)">
+      <p class="group-name">{{group.name}} ({{group.code}})</p>
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <p class="form-name">Create new</p>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="newGroupName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Code</mat-label>
+      <input matInput [(ngModel)]="newGroupCode">
+    </mat-form-field>
+
+    <mat-label>Currency</mat-label>
+    <mat-select [(value)]="newGroupCurrency">
+      <mat-option *ngFor="let currency of availableCurrencies" [value]="currency">
+        {{currency}}
+      </mat-option>
+    </mat-select>
+    <button mat-icon-button [disabled]="!newGroupName || !newGroupCode || !newGroupCurrency" (click)="createGroup()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
